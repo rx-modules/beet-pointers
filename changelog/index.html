@@ -1,0 +1,678 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="prev" title="Tutorial" href="../tutorial/" />
+
+    <!-- Generated with Sphinx 5.1.1 and Furo 2022.12.07 -->
+        <title>Changelog - bolt-expressions</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mudkip_furo.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../"><div class="brand">bolt-expressions</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../">
+  
+  
+  <span class="sidebar-brand-text">bolt-expressions</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rx-modules/bolt-expressions">GitHub repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/bolt-expressions">PyPI package</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
+<!--next-version-placeholder-->
+<section id="v0-17-1-2025-01-27">
+<h2>v0.17.1 (2025-01-27)<a class="headerlink" href="#v0-17-1-2025-01-27" title="Permalink to this heading">#</a></h2>
+<section id="fix">
+<h3>Fix<a class="headerlink" href="#fix" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Set rich as normal dependency (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/7f39b2a36067dca27f9a7d29c8d038e4ab225fdc"><code class="docutils literal notranslate"><span class="pre">7f39b2a</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-17-0-2024-08-10">
+<h2>v0.17.0 (2024-08-10)<a class="headerlink" href="#v0-17-0-2024-08-10" title="Permalink to this heading">#</a></h2>
+<section id="feature">
+<h3>Feature<a class="headerlink" href="#feature" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Make Data.cast lazy (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4d4e739e64c1542f62f5cb3350717913beb35fa4"><code class="docutils literal notranslate"><span class="pre">4d4e739</span></code></a>)</p></li>
+<li><p>Add composite literals (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/ae424a157322090ecd244065e554ef4c83e43dee"><code class="docutils literal notranslate"><span class="pre">ae424a1</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Fix<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Contrib.commands failed to parse data sources with empty path (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/3663d9613e9cc4f5ad9b145859c82de332d47f06"><code class="docutils literal notranslate"><span class="pre">3663d96</span></code></a>)</p></li>
+<li><p>Make nbt_type argument of Data.cast optional (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/beca595b0c37a9d7c427b3fe22160fd86e640baa"><code class="docutils literal notranslate"><span class="pre">beca595</span></code></a>)</p></li>
+<li><p>Type checking failing for expandable compound types (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/3b8c57edd4a6a444109f89acbc01d2862e224e84"><code class="docutils literal notranslate"><span class="pre">3b8c57e</span></code></a>)</p></li>
+<li><p>Improve source reuse optimization (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/6f1aef79f6356015b7f20edabdb60fa0d6c542a3"><code class="docutils literal notranslate"><span class="pre">6f1aef7</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-16-1-2024-06-23">
+<h2>v0.16.1 (2024-06-23)<a class="headerlink" href="#v0-16-1-2024-06-23" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h3>Fix<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Remove scientific notation formatting for small scale numbers (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/e72080d2ffada4fd6c4adc912b90e08a84569505"><code class="docutils literal notranslate"><span class="pre">e72080d</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-16-0-2024-02-23">
+<h2>v0.16.0 (2024-02-23)<a class="headerlink" href="#v0-16-0-2024-02-23" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h3>Feature<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Overloaded len function for data sources (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/792657baa2de8c9f5d88c8e15c22363d97550ce6"><code class="docutils literal notranslate"><span class="pre">792657b</span></code></a>)</p></li>
+<li><p>Add string data source indexing and slicing (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4b5fa58cb83efdc6fcfadc3f270631786b7c1298"><code class="docutils literal notranslate"><span class="pre">4b5fa58</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Fix<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Add store result inlining rule (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/006750bfb95d2ab1c29a95d21e3204c599d8405a"><code class="docutils literal notranslate"><span class="pre">006750b</span></code></a>)</p></li>
+<li><p>Lazy sources should discard previous value when reused (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/2101335ad560208d2f2f38959f5ea8966c5baf80"><code class="docutils literal notranslate"><span class="pre">2101335</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-15-0-2024-02-16">
+<h2>v0.15.0 (2024-02-16)<a class="headerlink" href="#v0-15-0-2024-02-16" title="Permalink to this heading">#</a></h2>
+<section id="id5">
+<h3>Feature<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Data comparison operator (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/749dd79b6e96c4bec0fa79eaff9733982e1649c5"><code class="docutils literal notranslate"><span class="pre">749dd79</span></code></a>)</p></li>
+<li><p>Add and/or operator support for sources/lazy sources (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/f8013e94feac584b470ebbadeb861423b24c4416"><code class="docutils literal notranslate"><span class="pre">f8013e9</span></code></a>)</p></li>
+<li><p>Improved if..elif..else with <strong>multibranch</strong> (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/174622679945b3b09634316e212036d195eb51e6"><code class="docutils literal notranslate"><span class="pre">1746226</span></code></a>)</p></li>
+<li><p>Add source branching and comparison operators (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/f8d8ec4b3612d080e17808e0a9bf02d3256a3f23"><code class="docutils literal notranslate"><span class="pre">f8d8ec4</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Fix<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Strip run execute from commands (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/c8648f229aa2201384d91d0bbcb7a9864133c4b9"><code class="docutils literal notranslate"><span class="pre">c8648f2</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-14-0-2024-02-05">
+<h2>v0.14.0 (2024-02-05)<a class="headerlink" href="#v0-14-0-2024-02-05" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h3>Feature<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Source lazy values and data source operator handlers (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/6832b9173d15ae6a88dd9d7d5b21929b459e41e6"><code class="docutils literal notranslate"><span class="pre">6832b91</span></code></a>)</p></li>
+<li><p>Type checking (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/b0313037e4428dd5e41cc7c608931cf613c6701f"><code class="docutils literal notranslate"><span class="pre">b031303</span></code></a>)</p></li>
+<li><p>Literal casting (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/9874ca91f2c7045ffc8fbf17b06505984f2870c2"><code class="docutils literal notranslate"><span class="pre">9874ca9</span></code></a>)</p></li>
+<li><p>Separate data source interfaces for each nbt type (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/dbe9a74f31f3c58fb1b34a5069edada983535ec9"><code class="docutils literal notranslate"><span class="pre">dbe9a74</span></code></a>)</p></li>
+<li><p>Support dicts, lists, arrays and union types (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/1097f5fedf8a7211c5437deeeac50eadd256ae03"><code class="docutils literal notranslate"><span class="pre">1097f5f</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Fix<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Only cast numeric nbt types (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/86d49b1b257996ded2c5becef223c9e6806b3c6a"><code class="docutils literal notranslate"><span class="pre">86d49b1</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-13-1-2024-01-24">
+<h2>v0.13.1 (2024-01-24)<a class="headerlink" href="#v0-13-1-2024-01-24" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h3>Fix<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Remove rich import (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/a07da7d539b1d0289d539d82493de8ed465d9e28"><code class="docutils literal notranslate"><span class="pre">a07da7d</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-13-0-2024-01-23">
+<h2>v0.13.0 (2024-01-23)<a class="headerlink" href="#v0-13-0-2024-01-23" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h3>Feature<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Specify data source types using square brackets (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/b7b96fb9c01580bd9504274f8728d1eea4ff1c28"><code class="docutils literal notranslate"><span class="pre">b7b96fb</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>Fix<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Reuse temporary score names (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/0eb9556918d9b0b1c0dbafe68a872763347f58ec"><code class="docutils literal notranslate"><span class="pre">0eb9556</span></code></a>)</p></li>
+<li><p>Make api not dependent of Context object (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/72afafe6f317147918ae95641a586c8f70b2ca2a"><code class="docutils literal notranslate"><span class="pre">72afafe</span></code></a>)</p></li>
+<li><p>Reduce number of temporaries used for score and data operations (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/8756e50002052b255bf6c2c1ccabb29271b93ef0"><code class="docutils literal notranslate"><span class="pre">8756e50</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-12-2-2023-01-08">
+<h2>v0.12.2 (2023-01-08)<a class="headerlink" href="#v0-12-2-2023-01-08" title="Permalink to this heading">#</a></h2>
+<section id="id12">
+<h3>Fix<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix inheritance of expression nodes and dataclasses.replace (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/bd6ac3d478a255603f2d70670337dd158fbefeaf"><code class="docutils literal notranslate"><span class="pre">bd6ac3d</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-12-1-2022-12-31">
+<h2>v0.12.1 (2022-12-31)<a class="headerlink" href="#v0-12-1-2022-12-31" title="Permalink to this heading">#</a></h2>
+<section id="id13">
+<h3>Fix<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Preserve key/default logic of builtin min/max functions (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/c127114beefff5e392cc3e4733b7c113202ccf91"><code class="docutils literal notranslate"><span class="pre">c127114</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-12-0-2022-12-30">
+<h2>v0.12.0 (2022-12-30)<a class="headerlink" href="#v0-12-0-2022-12-30" title="Permalink to this heading">#</a></h2>
+<section id="id14">
+<h3>Feature<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Support literal floating numbers on score multiplication/division (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/eea20d4d6a587e278f0a8bf8a7cae3a431b00fdd"><code class="docutils literal notranslate"><span class="pre">eea20d4</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>Fix<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Make wrapped min/max functions behave more like the builtin ones (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/7e3b4003e677bf7a1bd9c4728f332f63e6a12081"><code class="docutils literal notranslate"><span class="pre">7e3b400</span></code></a>)</p></li>
+<li><p>Remove commands that multiply/divide by 1, add/subtract by 0 (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/6d8cf882b029d49b120116ed088ee395d3902132"><code class="docutils literal notranslate"><span class="pre">6d8cf88</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-11-2-2022-12-27">
+<h2>v0.11.2 (2022-12-27)<a class="headerlink" href="#v0-11-2-2022-12-27" title="Permalink to this heading">#</a></h2>
+<section id="id16">
+<h3>Fix<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Import all subpackages in <strong>init</strong> for conveniency (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/7c2ed2c65d80b1e0f91efd970724414c24fd3e91"><code class="docutils literal notranslate"><span class="pre">7c2ed2c</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-11-1-2022-12-27">
+<h2>v0.11.1 (2022-12-27)<a class="headerlink" href="#v0-11-1-2022-12-27" title="Permalink to this heading">#</a></h2>
+<section id="id17">
+<h3>Fix<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Generate negative score constants in init function (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/9ec47cb3b7aa4e1d0baf865a2fa29a902eae1790"><code class="docutils literal notranslate"><span class="pre">9ec47cb</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-11-0-2022-11-19">
+<h2>v0.11.0 (2022-11-19)<a class="headerlink" href="#v0-11-0-2022-11-19" title="Permalink to this heading">#</a></h2>
+<section id="id18">
+<h3>Feature<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Implicitly convert sources into text components (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/d27870ef068b27dddf054b01d6c418d608a0a61a"><code class="docutils literal notranslate"><span class="pre">d27870e</span></code></a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">component</span></code> method to convert sources into text components (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/a22caf9256c234944ff1de41829d48e7c37ddc9b"><code class="docutils literal notranslate"><span class="pre">a22caf9</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-10-0-2022-11-15">
+<h2>v0.10.0 (2022-11-15)<a class="headerlink" href="#v0-10-0-2022-11-15" title="Permalink to this heading">#</a></h2>
+<section id="id19">
+<h3>Feature<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Require bolt_expressions.contrib.commands by default (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/f748ee3ea2e6cc5eb9416d295ce39001d03856da"><code class="docutils literal notranslate"><span class="pre">f748ee3</span></code></a>)</p></li>
+<li><p>Add bolt_expressions.contrib.commands (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/e40ae9562bae5589a0c541a60884ce79211febf8"><code class="docutils literal notranslate"><span class="pre">e40ae95</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-9-0-2022-11-07">
+<h2>v0.9.0 (2022-11-07)<a class="headerlink" href="#v0-9-0-2022-11-07" title="Permalink to this heading">#</a></h2>
+<section id="id20">
+<h3>Feature<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Let custom objectives be added to init function (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/99483fbbcd4c3653b40cc3eed0c948843699caea"><code class="docutils literal notranslate"><span class="pre">99483fb</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-8-3-2022-11-07">
+<h2>v0.8.3 (2022-11-07)<a class="headerlink" href="#v0-8-3-2022-11-07" title="Permalink to this heading">#</a></h2>
+<section id="id21">
+<h3>Fix<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Generate init function only when needed (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/01f3193d56d79c62608ff239b8f26032c1cc2685"><code class="docutils literal notranslate"><span class="pre">01f3193</span></code></a>)</p></li>
+<li><p>Prevent init function from having unused objectives (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4b6a490b47345e5ee66e386c839aebc052c22ac4"><code class="docutils literal notranslate"><span class="pre">4b6a490</span></code></a>)</p></li>
+<li><p>Prevent init function from having duplicated/unused constants (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/05a2638a8e9f637f443b2a98419544b3abd75127"><code class="docutils literal notranslate"><span class="pre">05a2638</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-8-2-2022-08-28">
+<h2>v0.8.2 (2022-08-28)<a class="headerlink" href="#v0-8-2-2022-08-28" title="Permalink to this heading">#</a></h2>
+<section id="id22">
+<h3>Fix<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>DataSource._copy doesn't support subclasses. (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/21d1db3447061fa5eefcaf60aae8ac9b755e4d5e"><code class="docutils literal notranslate"><span class="pre">21d1db3</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-8-1-2022-08-24">
+<h2>v0.8.1 (2022-08-24)<a class="headerlink" href="#v0-8-1-2022-08-24" title="Permalink to this heading">#</a></h2>
+<section id="id23">
+<h3>Fix<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Let dicts be used as filter keys in DataSource paths (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/f10cbdfdc334b67d1303f920d9512271ced2a540"><code class="docutils literal notranslate"><span class="pre">f10cbdf</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-8-0-2022-07-27">
+<h2>v0.8.0 (2022-07-27)<a class="headerlink" href="#v0-8-0-2022-07-27" title="Permalink to this heading">#</a></h2>
+<section id="id24">
+<h3>Feature<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Api method to cast expressions to any nbt type (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/eb3d53227df26d48f8291f1f0137ccc12f75caba"><code class="docutils literal notranslate"><span class="pre">eb3d532</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>Fix<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Better nbt type handling (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/9f63995b4fdfd38803da54260acd18bb09493c45"><code class="docutils literal notranslate"><span class="pre">9f63995</span></code></a>)</p></li>
+<li><p>Scaling/casting between data sources doesn't work (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/50744149cf3a16cefce18e42d096ffc44196f1bc"><code class="docutils literal notranslate"><span class="pre">5074414</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-7-0-2022-06-15">
+<h2>v0.7.0 (2022-06-15)<a class="headerlink" href="#v0-7-0-2022-06-15" title="Permalink to this heading">#</a></h2>
+<section id="id26">
+<h3>Feature<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Scale nbt data with multiplication/division (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/ebf942009d5696b57d695e05b3dfc2819f9029d3"><code class="docutils literal notranslate"><span class="pre">ebf9420</span></code></a>)</p></li>
+<li><p>Directly create score sources using the Scoreboard API (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4d42c97990f872f107892cf6b2f27202343ceb28"><code class="docutils literal notranslate"><span class="pre">4d42c97</span></code></a>)</p></li>
+<li><p>Create multiple score sources at once (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4eca5743740799ec57def181559ff908d949e71c"><code class="docutils literal notranslate"><span class="pre">4eca574</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-6-1-2022-04-30">
+<h2>v0.6.1 (2022-04-30)<a class="headerlink" href="#v0-6-1-2022-04-30" title="Permalink to this heading">#</a></h2>
+<section id="id27">
+<h3>Fix<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">bolt</span></code> package instead of <code class="docutils literal notranslate"><span class="pre">mecha.contrib.bolt</span></code> in <code class="docutils literal notranslate"><span class="pre">api.py</span></code> (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/ace4b1ae5f637f771e819e6bb83a32cd8a92866b"><code class="docutils literal notranslate"><span class="pre">ace4b1a</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Changes related to the new <code class="docutils literal notranslate"><span class="pre">bolt</span></code> package. (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/6ceac3bc93a4e6949302eb96bb68ef60d8c2461b"><code class="docutils literal notranslate"><span class="pre">6ceac3b</span></code></a>)</p></li>
+<li><p>Fix tutorial codeblocks not using mcfunction lang (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/aff3d905f87ccdd8a74467a38d8f925f550780af"><code class="docutils literal notranslate"><span class="pre">aff3d90</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-6-0-2022-04-14">
+<h2>v0.6.0 (2022-04-14)<a class="headerlink" href="#v0-6-0-2022-04-14" title="Permalink to this heading">#</a></h2>
+<section id="id28">
+<h3>Feature<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Add expression node methods (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/97b5a44253370aeaef5d9c820e4ef93c4f4950c9"><code class="docutils literal notranslate"><span class="pre">97b5a44</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-5-0-2022-04-02">
+<h2>v0.5.0 (2022-04-02)<a class="headerlink" href="#v0-5-0-2022-04-02" title="Permalink to this heading">#</a></h2>
+<section id="id29">
+<h3>Feature<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">objective_prefix</span></code> config, optional <code class="docutils literal notranslate"><span class="pre">prefixed</span></code> flag when creating an objective. (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/6c43d51dd78b0c0da5cb239766bbeabd4359b84f"><code class="docutils literal notranslate"><span class="pre">6c43d51</span></code></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">holder</span></code> and <code class="docutils literal notranslate"><span class="pre">obj</span></code> property aliases for score sources. (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/e6bfdb8b5cc3919104a1ef532a2365df4324ca84"><code class="docutils literal notranslate"><span class="pre">e6bfdb8</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id30">
+<h3>Documentation<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix docs for now (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/8a0f02adbd6028ae13f5f146c80a3ae326a9c36e"><code class="docutils literal notranslate"><span class="pre">8a0f02a</span></code></a>)</p></li>
+<li><p>Add generated commands to <code class="docutils literal notranslate"><span class="pre">tutorial.md</span></code> (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/8711845d32176c43224f3ed1e169e7380e413bcf"><code class="docutils literal notranslate"><span class="pre">8711845</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-5-2022-03-31">
+<h2>v0.4.5 (2022-03-31)<a class="headerlink" href="#v0-4-5-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id31">
+<h3>Fix<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Init function would be prepended to load tag even if <code class="docutils literal notranslate"><span class="pre">Expression.init</span></code> was called (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/34080fe170b2a43148917d635f95602a9f52e57e"><code class="docutils literal notranslate"><span class="pre">34080fe</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id32">
+<h3>Documentation<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Adjust tutorial (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4077a7059393771318431b20ea1810846f05543d"><code class="docutils literal notranslate"><span class="pre">4077a70</span></code></a>)</p></li>
+<li><p>Fix table of contents (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/2fb5935c4a8cf48bbe89947c6a147a4414bea70d"><code class="docutils literal notranslate"><span class="pre">2fb5935</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-4-2022-03-31">
+<h2>v0.4.4 (2022-03-31)<a class="headerlink" href="#v0-4-4-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id33">
+<h3>Fix<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Expression.init() creates function with incorrect init path (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/665edccefb89b669cb72a5d6e1d27dcdfd990380"><code class="docutils literal notranslate"><span class="pre">665edcc</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-3-2022-03-31">
+<h2>v0.4.3 (2022-03-31)<a class="headerlink" href="#v0-4-3-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id34">
+<h3>Fix<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Generate_init error (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/65f8b5aa67f75fb1eeb5674e68c9a9f42a4e9215"><code class="docutils literal notranslate"><span class="pre">65f8b5a</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-2-2022-03-31">
+<h2>v0.4.2 (2022-03-31)<a class="headerlink" href="#v0-4-2-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id35">
+<h3>Fix<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Forcing a release to build new docs ffs (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/e30adf7d2ddd2137a5e13921e5a405046b94ee09"><code class="docutils literal notranslate"><span class="pre">e30adf7</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id36">
+<h3>Documentation<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix workflow (3.10 versus &quot;3.10&quot;) (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/9cbc582b463c352fb0a5c34662205c2e6fdf8220"><code class="docutils literal notranslate"><span class="pre">9cbc582</span></code></a>)</p></li>
+<li><p>Auto build and deploy docs (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/3f8bf8e6602d4b584a28ef1832f102f50babed2b"><code class="docutils literal notranslate"><span class="pre">3f8bf8e</span></code></a>)</p></li>
+<li><p>Old usage on README.md fixed (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/60808b1b41bb3dba5bb70afdc4c59eec0c3fbcfc"><code class="docutils literal notranslate"><span class="pre">60808b1</span></code></a>)</p></li>
+<li><p>Added tutorial and cleaned README.md (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/b78605200aff225dc838b82141dd466cf3f82904"><code class="docutils literal notranslate"><span class="pre">b786052</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-1-2022-03-31">
+<h2>v0.4.1 (2022-03-31)<a class="headerlink" href="#v0-4-1-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id37">
+<h3>Fix<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Scoreboard.objective now works and is preferred (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/e292d994a3e7e913655ed31610693deeabc434a5"><code class="docutils literal notranslate"><span class="pre">e292d99</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-4-0-2022-03-31">
+<h2>v0.4.0 (2022-03-31)<a class="headerlink" href="#v0-4-0-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id38">
+<h3>Feature<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ctx.inject is now implicit (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/f29406f3672b6a47779faf7a3ef2767dfa2d5402"><code class="docutils literal notranslate"><span class="pre">f29406f</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-3-0-2022-03-31">
+<h2>v0.3.0 (2022-03-31)<a class="headerlink" href="#v0-3-0-2022-03-31" title="Permalink to this heading">#</a></h2>
+<section id="id39">
+<h3>Feature<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>New NBT DataSource feature (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/9660bbb96766f1df0464c1ed5d2b50360076e01e"><code class="docutils literal notranslate"><span class="pre">9660bbb</span></code></a>)</p></li>
+<li><p>Objectives and constants now properly init on load (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/98382122af225bac71af3ec861663d751b9ef914"><code class="docutils literal notranslate"><span class="pre">9838212</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id40">
+<h3>Fix<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Tests now properly index ensuring that github passes all tests (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/77aafd18dc6e633a0ac62b0363413eb1c5ac8046"><code class="docutils literal notranslate"><span class="pre">77aafd1</span></code></a>)</p></li>
+<li><p>Rmin and rmax now function correctly (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/3410fee31a0aab0a02bce37a09141682c8a847d3"><code class="docutils literal notranslate"><span class="pre">3410fee</span></code></a>)</p></li>
+<li><p>More missing callbacks (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/c6451e8c59f751517647c8a3304f4e3c5ac7bda2"><code class="docutils literal notranslate"><span class="pre">c6451e8</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-2-1-2022-03-28">
+<h2>v0.2.1 (2022-03-28)<a class="headerlink" href="#v0-2-1-2022-03-28" title="Permalink to this heading">#</a></h2>
+<section id="id41">
+<h3>Fix<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Missing callback reference (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/084a0f5d9a6a9745e444271af200dfb3f8bc98fd"><code class="docutils literal notranslate"><span class="pre">084a0f5</span></code></a>)</p></li>
+<li><p><strong>min</strong> and <strong>max</strong> now functions without ducking (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/777f71b02da5744c7c5534e67b763c7ea3a21247"><code class="docutils literal notranslate"><span class="pre">777f71b</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-2-0-2022-03-28">
+<h2>v0.2.0 (2022-03-28)<a class="headerlink" href="#v0-2-0-2022-03-28" title="Permalink to this heading">#</a></h2>
+<section id="id42">
+<h3>Feature<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Paint it black: 0.2.0 (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/4abaf3993a70377c23f8073a7b544a929ebbceb3"><code class="docutils literal notranslate"><span class="pre">4abaf39</span></code></a>)</p></li>
+<li><p>Added <strong>min</strong> and <strong>max</strong> functionality (ducked currently) (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/d359ade7ee21662e259979635928187920933f6c"><code class="docutils literal notranslate"><span class="pre">d359ade</span></code></a>)</p></li>
+<li><p>SmartGenerator (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/f1d0bab5d7b4b906c1eca3b1e5c3bfdb358955b4"><code class="docutils literal notranslate"><span class="pre">f1d0bab</span></code></a>)</p></li>
+</ul>
+</section>
+<section id="id43">
+<h3>Fix<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Pyproject.toml version var mismatch (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/1ce816ddcf228d06283468915b4ce7fa20cd112c"><code class="docutils literal notranslate"><span class="pre">1ce816d</span></code></a>)</p></li>
+<li><p>Fix github workflows (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/c65c1af517a25581e6a03931df4e9530ad9ac3ce"><code class="docutils literal notranslate"><span class="pre">c65c1af</span></code></a>)</p></li>
+<li><p>Make less temp vars (<a class="reference external" href="https://github.com/rx-modules/bolt-expressions/commit/043605fb5af268c46c5b34917d2b673972be12f7"><code class="docutils literal notranslate"><span class="pre">043605f</span></code></a>)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="../tutorial/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Tutorial</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    </body>
+</html>

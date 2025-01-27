@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Changelog" href="../changelog/" /><link rel="prev" title="bolt-expressions" href="../" />
+
+    <!-- Generated with Sphinx 5.1.1 and Furo 2022.12.07 -->
+        <title>Tutorial - bolt-expressions</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mudkip_furo.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../"><div class="brand">bolt-expressions</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../">
+  
+  
+  <span class="sidebar-brand-text">bolt-expressions</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rx-modules/bolt-expressions">GitHub repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/bolt-expressions">PyPI package</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">bolt_expressions</span></code> provides some psuedo pointers which allow you to interopt between normal minecraft (or bolt) commands and our robust interface for generating expressions. The main endpoints for the logic lay in the specialized <code class="docutils literal notranslate"><span class="pre">Scoreboard</span></code> and <code class="docutils literal notranslate"><span class="pre">Data</span></code> objects.</p>
+<p>Before utilizing <code class="docutils literal notranslate"><span class="pre">bolt_expressions</span></code> in a bolt script, make sure you <em>require</em> <code class="docutils literal notranslate"><span class="pre">bolt_expressions</span></code> in your beet config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my cool project</span><span class="w"></span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">me (cool person)</span><span class="w"></span>
+
+<span class="nt">data_pack</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">src</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="nt">require</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bolt</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bolt_expressions</span><span class="w"></span>
+
+<span class="nt">pipeline</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mecha</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now, inside a valid bolt script, import from our library.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bolt_expressions</span> <span class="kn">import</span> <span class="n">Scoreboard</span><span class="p">,</span> <span class="n">Data</span>
+
+<span class="n">my_obj</span> <span class="o">=</span> <span class="n">Scoreboard</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="s2">&quot;my_obj&quot;</span><span class="p">)</span>
+<span class="n">my_obj</span><span class="p">[</span><span class="s2">&quot;@s&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+<section id="common-use-cases">
+<h2>Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Scoreboard</span></code> and <code class="docutils literal notranslate"><span class="pre">Data</span></code> objects provides you a <em>rich</em> API for you to interact within your bolt landscape. Most numerical operations (such as <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>) will produce sequential <code class="docutils literal notranslate"><span class="pre">scoreboard</span> <span class="pre">operation</span></code> commands for you to work with. Longer expressions will benefit from an optimization system which will help shorten the size of the resulting commands. Feel free to use various pointers together, our library will chunk through anything!</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">math</span> <span class="o">=</span> <span class="n">Scoreboard</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="s2">&quot;math&quot;</span><span class="p">)</span>
+<span class="n">player</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">entity</span><span class="p">(</span><span class="s2">&quot;@s&quot;</span><span class="p">)</span>
+
+<span class="n">CONSTANT</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span>
+<span class="n">math</span><span class="p">[</span><span class="s2">&quot;@s&quot;</span><span class="p">]</span> <span class="o">*=</span> <span class="p">(</span><span class="n">entity_id</span><span class="p">[</span><span class="s2">&quot;current_id&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">200</span><span class="p">)</span> <span class="o">+</span> <span class="n">CONSTANT</span>
+<span class="n">math</span><span class="p">[</span><span class="s2">&quot;@a[sort=random, limit=1]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">Health</span> <span class="o">+</span> <span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">SelectedSlot</span> <span class="o">*</span> <span class="mi">9</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<details>
+<summary>Generated Commands</summary>
+<div class="highlight-mcfunction notranslate"><div class="highlight"><pre><span></span><span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">current_id</span><span class="w"> </span><span class="kc">entity.id</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="vm">$200</span><span class="w"> </span><span class="kc">bolt.expr.const</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">add</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">86400</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="nv">@s</span><span class="w"> </span><span class="kc">math</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+
+<span class="nb">execute</span><span class="w"> </span><span class="kc">store</span><span class="w"> </span><span class="kc">result</span><span class="w"> </span><span class="kc">score</span><span class="w"> </span><span class="nv">@a</span><span class="p">[</span><span class="na">sort</span><span class="p">=</span><span class="nt">random</span><span class="p">,</span><span class="w"> </span><span class="na">limit</span><span class="p">=</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="kc">math</span><span class="w"> </span><span class="kc">run</span><span class="nb"> data</span><span class="w"> </span><span class="kc">get</span><span class="w"> </span><span class="kc">entity</span><span class="w"> </span><span class="nv">@s</span><span class="w"> </span><span class="kc">SelectedSlot</span><span class="w"> </span><span class="mf">1</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="nv">@a</span><span class="p">[</span><span class="na">sort</span><span class="p">=</span><span class="nt">random</span><span class="p">,</span><span class="w"> </span><span class="na">limit</span><span class="p">=</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="kc">math</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="vm">$9</span><span class="w"> </span><span class="kc">bolt.expr.const</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="nv">@a</span><span class="p">[</span><span class="na">sort</span><span class="p">=</span><span class="nt">random</span><span class="p">,</span><span class="w"> </span><span class="na">limit</span><span class="p">=</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="kc">math</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="vm">$5</span><span class="w"> </span><span class="kc">bolt.expr.const</span><span class="w"></span>
+<span class="nb">execute</span><span class="w"> </span><span class="kc">store</span><span class="w"> </span><span class="kc">result</span><span class="w"> </span><span class="kc">score</span><span class="w"> </span><span class="vm">$i3</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="kc">run</span><span class="nb"> data</span><span class="w"> </span><span class="kc">get</span><span class="w"> </span><span class="kc">entity</span><span class="w"> </span><span class="nv">@s</span><span class="w"> </span><span class="kc">Health</span><span class="w"> </span><span class="mf">1</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="nv">@a</span><span class="p">[</span><span class="na">sort</span><span class="p">=</span><span class="nt">random</span><span class="p">,</span><span class="w"> </span><span class="na">limit</span><span class="p">=</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="kc">math</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="vm">$i3</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+</pre></div>
+</div>
+</details>
+<p>You can also utilize local variables to simplify readability with longer operations. This is due to the unique <code class="docutils literal notranslate"><span class="pre">__rebind__</span></code> operator provided only in the <code class="docutils literal notranslate"><span class="pre">bolt</span></code> context which allows us provide custom behavior with the <code class="docutils literal notranslate"><span class="pre">=</span></code> operation. We also have defined helper functions such as <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>, alongside <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> and <code class="docutils literal notranslate"><span class="pre">**</span></code> (for <code class="docutils literal notranslate"><span class="pre">pow</span></code>).</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">damage</span> <span class="o">=</span> <span class="n">Scoreboard</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="s2">&quot;damage&quot;</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;damage&quot;</span><span class="p">:</span> <span class="n">damage</span><span class="p">[</span><span class="s2">&quot;damage&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;toughness&quot;</span><span class="p">:</span> <span class="n">damage</span><span class="p">[</span><span class="s2">&quot;toughness&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;armor&quot;</span><span class="p">:</span> <span class="n">damage</span><span class="p">[</span><span class="s2">&quot;armor&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">damage</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">damage</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">]</span>
+
+<span class="c1"># This example is split up onto 3 lines to help with readability 📖</span>
+<span class="c1">#  The library will consider this one long expression when optimizing 🔥</span>
+<span class="n">atf</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">armor</span> <span class="o">-</span> <span class="p">(</span><span class="mi">400</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">armor</span> <span class="o">/</span> <span class="p">(</span><span class="mi">80</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">toughness</span><span class="p">)))</span> <span class="c1"># python local variable</span>
+<span class="n">maxxed</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="mi">10</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">armor</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">,</span> <span class="n">atf</span><span class="p">)</span>                                    <span class="c1"># still local variable</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">value</span> <span class="o">*</span> <span class="p">(</span><span class="mi">250</span> <span class="o">-</span> <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">maxxed</span><span class="p">)))</span> <span class="o">/</span> <span class="mi">25</span>                             <span class="c1"># ✨ special behavior | generates commands ✨</span>
+</pre></div>
+</div>
+<details>
+<summary>Generated Commands</summary>
+<div class="highlight-mcfunction notranslate"><div class="highlight"><pre><span></span><span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">set</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">10</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="kc">armor</span><span class="w"> </span><span class="kc">damage</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="vm">$5</span><span class="w"> </span><span class="kc">bolt.expr.const</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">set</span><span class="w"> </span><span class="vm">$i2</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">10</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i2</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="kc">armor</span><span class="w"> </span><span class="kc">damage</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">set</span><span class="w"> </span><span class="vm">$i3</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">400</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i3</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="kc">armor</span><span class="w"> </span><span class="kc">damage</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">set</span><span class="w"> </span><span class="vm">$i4</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">10</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i4</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="kc">toughness</span><span class="w"> </span><span class="kc">damage</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">add</span><span class="w"> </span><span class="vm">$i4</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">80</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i3</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="vm">$i4</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i2</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="vm">$i3</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="vm">$i2</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">set</span><span class="w"> </span><span class="vm">$i9</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="mf">200</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="vm">$i9</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="vm">$i0</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">set</span><span class="w"> </span><span class="kc">output</span><span class="w"> </span><span class="kc">damage</span><span class="w"> </span><span class="mf">250</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="kc">output</span><span class="w"> </span><span class="kc">damage</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="vm">$i9</span><span class="w"> </span><span class="kc">bolt.expr.temp</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="kc">output</span><span class="w"> </span><span class="kc">damage</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="kc">value</span><span class="w"> </span><span class="kc">damage</span><span class="w"></span>
+<span class="nb">scoreboard</span><span class="w"> </span><span class="kc">players</span><span class="w"> </span><span class="kc">operation</span><span class="w"> </span><span class="kc">output</span><span class="w"> </span><span class="kc">damage</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="vm">$25</span><span class="w"> </span><span class="kc">bolt.expr.const</span><span class="w"></span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="advanced-use-cases">
+<h2>Advanced Use Cases 🔥<a class="headerlink" href="#advanced-use-cases" title="Permalink to this heading">#</a></h2>
+<p>This library sits very nicely in the <code class="docutils literal notranslate"><span class="pre">bolt</span></code> workspace as it can integrate with python functions. This leads naturally to a popular <em>callback</em> pattern which allows you to encapsulate repeated and popular patterns. Here are just a couple of examples to get you inspired ✨!</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># ./utils</span>
+<span class="kn">from</span> <span class="nn">bolt_expressions</span> <span class="kn">import</span> <span class="n">Scoreboard</span>
+<span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">py_random</span>
+
+<span class="n">math</span> <span class="o">=</span> <span class="n">Scoreboard</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="s2">&quot;abc.math&quot;</span><span class="p">)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">Scoreboard</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="s2">&quot;abc.temp&quot;</span><span class="p">)</span>
+
+<span class="n">_LCG_CONSTANT</span> <span class="o">=</span> <span class="mi">1623164762</span>
+<span class="k">def</span> <span class="nf">randint</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">randomize_output</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#range&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#lcg&quot;</span><span class="p">]</span> <span class="o">*=</span> <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#lcg.multiplier&quot;</span><span class="p">]</span>
+    <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#lcg&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_LCG_CONSTANT</span>
+
+    <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#output&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#lcg&quot;</span><span class="p">]</span> <span class="o">%</span> <span class="n">math</span><span class="p">[</span><span class="s2">&quot;#range&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">min</span>
+
+    <span class="k">if</span> <span class="n">randomize_output</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">math</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;#output_</span><span class="si">{</span><span class="nb">hash</span><span class="p">((</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">py_random</span><span class="p">()))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    
+    <span class="c1"># This is hacky, you could do this in a if statement.</span>
+    <span class="c1">#  a) it just copies the `math[&quot;output&quot;]` python reference</span>
+    <span class="c1">#  b) it performs `__rebind__` and does a `scoreboard players operation`</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">math</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">]</span> 
+    <span class="k">return</span> <span class="n">output</span>
+
+<span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="c1"># pretend this has every block in the game</span>
+
+<span class="c1"># ./client</span>
+<span class="kn">from</span> <span class="nn">.</span><span class="o">/</span><span class="n">utils</span> <span class="kn">import</span> <span class="nn">randint</span><span class="o">,</span> <span class="nn">blocks</span>
+
+<span class="n">choice</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">generate_tree</span><span class="p">(</span><span class="n">blocks</span><span class="p">):</span>
+    <span class="n">append</span> <span class="n">function</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">score</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">choice</span><span class="o">.</span><span class="n">scoreholder</span><span class="si">}</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">choice</span><span class="o">.</span><span class="n">objective</span><span class="si">}</span><span class="s2">&quot;</span> <span class="n">matches</span> <span class="n">node</span><span class="o">.</span><span class="n">range</span> <span class="n">function</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">score</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">choice</span><span class="o">.</span><span class="n">scoreholder</span><span class="si">}</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">choice</span><span class="o">.</span><span class="n">objective</span><span class="si">}</span><span class="s2">&quot;</span> <span class="n">matches</span> <span class="n">node</span><span class="o">.</span><span class="n">range</span> <span class="n">setblock</span> <span class="o">~</span> <span class="o">~</span> <span class="o">~</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+
+<span class="c1"># Note, in the future, you will be able to use `choice` directly with mecha commands</span>
+</pre></div>
+</div>
+<p>In this example, we wrote a wrapper for a tiny <code class="docutils literal notranslate"><span class="pre">randint</span></code> function which will generate random number generation (through a LCG). The beauty of an interface like so is that we don't have to worry about passing in scoreholders as arugments, instead, we just pass in numbers, and the function handles the arguments and outputs for us. This lets us write in a more <em>functional</em> style.</p>
+<div class="warning admonition">
+<p class="admonition-title">🚧 In Construction 🚧</p>
+<p>This section is still in progress. Stay tuned!</p>
+</div>
+<p><em>If you have any cool examples, please let us know! Just open an issue :)</em></p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../changelog/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Changelog</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    </body>
+</html>
